@@ -1,0 +1,10 @@
+# Voice Recordings:
+*.wav
+*.wave
+
+# Virtual environment and IDE
+.venv/
+.idea/
+
+# Numpy data files
+*.npy
