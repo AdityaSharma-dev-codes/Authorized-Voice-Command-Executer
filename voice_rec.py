@@ -10,4 +10,4 @@ def rec_audio(filename ,sample_rate, duration):
     print("Recording Complete")
     write(filename, sample_rate, audio)
 
-rec_audio("sample_1", samplerate, time) #Change filename for each sample Collected
+rec_audio("sample_1.wav", samplerate, time) #Change filename for each sample Collected
