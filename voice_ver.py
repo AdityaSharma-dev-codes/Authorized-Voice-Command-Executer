@@ -16,13 +16,13 @@ print("Speak now for authentication...")
 
 audio = sd.rec( int(DURATION * SAMPLE_RATE), samplerate=SAMPLE_RATE, channels=1, dtype="float32" )
 sd.wait()
-write("test.wav", SAMPLE_RATE, audio)
+write("Test_voices/test_*.wav", SAMPLE_RATE, audio)
 
 print("Processing voice...")
 
 encoder = VoiceEncoder()
 
-wav = preprocess_wav("test.wav")
+wav = preprocess_wav("Test_voices/test_*.wav")
 current_embedding = encoder.embed_utterance(wav)
 
 # Load stored voice profile
