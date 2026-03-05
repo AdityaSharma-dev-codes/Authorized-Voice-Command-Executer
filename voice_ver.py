@@ -26,7 +26,7 @@ wav = preprocess_wav("test.wav")
 current_embedding = encoder.embed_utterance(wav)
 
 # Load stored voice profile
-voice_profile = np.load("Voice_Profile.npy")
+voice_profile = np.load("Voice_Profiles/Voice_Profile.npy")
 
 # Compare voices
 similarity = cosine_similarity(current_embedding, voice_profile)

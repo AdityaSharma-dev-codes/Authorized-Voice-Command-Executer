@@ -19,5 +19,5 @@ for f in files:
 print(embeddings)
 
 voice_profile = np.mean(embeddings, 0)
-np.save("Voice_Profile.npy", voice_profile)
+np.save("Voice_Profiles/Voice_Profile.npy", voice_profile)
 print("Voice profile created")
