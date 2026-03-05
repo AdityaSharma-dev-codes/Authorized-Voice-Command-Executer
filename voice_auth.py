@@ -5,7 +5,7 @@ import os
 print("Current directory:", os.getcwd())
 
 embeddings = []
-files = glob.glob("sample_*.wav")
+files = glob.glob("Samples/sample_*.wav")
 print("Found Files: ", files)
 encoder = VoiceEncoder()
 
