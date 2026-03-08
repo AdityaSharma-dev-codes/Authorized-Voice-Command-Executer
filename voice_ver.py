@@ -6,7 +6,7 @@ from numpy.linalg import norm
 
 SAMPLE_RATE = 16000
 DURATION = 5
-THRESHOLD = 0.70 # authentication threshold
+THRESHOLD = 0.75 # authentication threshold
 
 def cosine_similarity(a, b):
     return np.dot(a, b) / (norm(a) * norm(b))
