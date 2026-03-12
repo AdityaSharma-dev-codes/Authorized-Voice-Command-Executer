@@ -8,3 +8,6 @@
 
 # Numpy data files
 *.npy
+
+# Text files
+*.txt

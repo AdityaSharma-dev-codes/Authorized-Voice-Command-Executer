@@ -22,15 +22,6 @@ result = model.transcribe("Test_voices/live_test.wav",
                           fp16 = False
 )
 
-import os
-
 text = result["text"].strip().lower()
-
-if "firefox" in text:
-    os.system("firefox")
-
-elif "terminal" in text:
-    os.system("gnome-terminal")
-
-elif "shutdown" in text:
-    os.system("shutdown now")
+with open('commands.txt', 'w') as f:
+    f.write(text)
