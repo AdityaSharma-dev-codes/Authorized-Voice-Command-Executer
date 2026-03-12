@@ -54,16 +54,20 @@ python voice_ver.py
 ```
 
 ### 4. Speech Recognition (Experimental)
-Test the transcription capabilities using OpenAI's Whisper model:
+Test the transcription and voice command execution capabilities using OpenAI's Whisper `small` model.
 ```bash
 python speech_rec.py
 ```
+Currently, it supports the following voice commands:
+- **"firefox"**: Opens the Firefox web browser.
+- **"terminal"**: Opens the `gnome-terminal` terminal.
+- **"shutdown"**: Initiates a system shutdown.
 
 ## Project Structure
 - `voice_rec.py`: Records voice samples for training.
 - `voice_auth.py`: Generates a voice profile from the collected samples.
 - `voice_ver.py`: Performs live voice authentication.
-- `speech_rec.py`: Transcribes audio using Whisper.
+- `speech_rec.py`: Transcribes audio and executes basic system commands using Whisper.
 - `Samples/`: Directory for storing training voice samples.
 - `Voice_Profiles/`: Directory for storing the generated `.npy` profile.
 - `Test_voices/`: Directory for storing temporary recordings for verification.

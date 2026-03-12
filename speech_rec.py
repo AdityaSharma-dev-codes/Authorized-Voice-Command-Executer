@@ -2,7 +2,8 @@ import whisper
 import sounddevice as sd
 from scipy.io.wavfile import write
 
-model = whisper.load_model("base")
+model = whisper.load_model("small")
+
 
 samplerate = 16000 # Quality
 time = 5 # Seconds
@@ -16,5 +17,20 @@ def rec_audio(filename ,sample_rate, duration):
 
 rec_audio("Test_voices/live_test.wav", samplerate, time)
 
-result = model.transcribe("Test_voices/live_test.wav")
-print(result["text"])
+result = model.transcribe("Test_voices/live_test.wav",
+                          language = "en",
+                          fp16 = False
+)
+
+import os
+
+text = result["text"].strip().lower()
+
+if "firefox" in text:
+    os.system("firefox")
+
+elif "terminal" in text:
+    os.system("gnome-terminal")
+
+elif "shutdown" in text:
+    os.system("shutdown now")
