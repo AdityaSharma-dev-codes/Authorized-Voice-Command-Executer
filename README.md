@@ -1,18 +1,74 @@
-# Authorized-Voice-Command-Executer
+# Authorized Voice Command Executer
 
 ## Project Overview
-The goal of this project is to develop a personal voice authentication system that allows only the registered user to execute commands on a computer system.
-The system aims to provide a lightweight, 
-offline biometric security mechanism by integrating voice recognition with system command execution.
+The goal of this project is to develop a personal voice authentication system that allows only the registered user to execute commands on a computer system. The system provides a lightweight, offline biometric security mechanism by integrating voice recognition with system command execution.
 
-## What's Implemented
-The current implementation focuses on building the core speaker verification pipeline, 
-including audio capture, 
-voice embedding generation, 
-voice profile creation, 
-and similarity-based identity verification.
+## Features
+- **Speaker Verification:** Identify if the speaker matches a registered voice profile.
+- **Voice Profile Creation:** Generate unique voice embeddings from recorded samples.
+- **Similarity Scoring:** Uses cosine similarity to compare voice embeddings.
+- **Offline Processing:** Designed to run locally with minimal dependencies.
+- **Transcription (Upcoming):** Integrated Whisper model for transcribing voice commands.
 
-## Project Goal
-Future versions of the project will expand the system to support continuous authentication, 
-voice command recognition, and automated system control, 
-ultimately enabling a personalized voice-controlled environment where only the authenticated user's voice can trigger actions.
+## Installation
+
+### Prerequisites
+- Python 3.8+
+- [PortAudio](http://www.portaudio.com/) (required for `sounddevice`)
+
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/authorized-voice-command-executor.git
+   cd Authorized-Voice-Command-Executer
+   ```
+
+2. Install the required dependencies:
+   ```bash
+   pip install numpy resemblyzer sounddevice scipy openai-whisper
+   ```
+
+3. Create the necessary directories:
+   ```bash
+   mkdir Samples Voice_Profiles Test_voices
+   ```
+
+## Usage
+
+### 1. Record Voice Samples
+Run `voice_rec.py` to collect audio samples of your voice. Rename the saved file after each recording to avoid overwriting (e.g., `Samples/sample_1.wav`, `Samples/sample_2.wav`).
+```bash
+python voice_rec.py
+```
+
+### 2. Generate Voice Profile
+After collecting several samples in the `Samples/` directory, run `voice_auth.py` to create your biometric voice profile (`Voice_Profiles/Voice_Profile.npy`).
+```bash
+python voice_auth.py
+```
+
+### 3. Verify Identity
+To test the authentication, run `voice_ver.py`. It will record 5 seconds of audio and compare it against your stored profile.
+```bash
+python voice_ver.py
+```
+
+### 4. Speech Recognition (Experimental)
+Test the transcription capabilities using OpenAI's Whisper model:
+```bash
+python speech_rec.py
+```
+
+## Project Structure
+- `voice_rec.py`: Records voice samples for training.
+- `voice_auth.py`: Generates a voice profile from the collected samples.
+- `voice_ver.py`: Performs live voice authentication.
+- `speech_rec.py`: Transcribes audio using Whisper.
+- `Samples/`: Directory for storing training voice samples.
+- `Voice_Profiles/`: Directory for storing the generated `.npy` profile.
+- `Test_voices/`: Directory for storing temporary recordings for verification.
+
+## Future Goals
+- Implement continuous authentication.
+- Map authenticated voice commands to system actions.
+- Improve security with anti-spoofing techniques.

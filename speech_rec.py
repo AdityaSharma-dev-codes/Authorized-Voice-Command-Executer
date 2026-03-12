@@ -17,5 +17,4 @@ def rec_audio(filename ,sample_rate, duration):
 rec_audio("Test_voices/live_test.wav", samplerate, time)
 
 result = model.transcribe("Test_voices/live_test.wav")
-
 print(result["text"])
