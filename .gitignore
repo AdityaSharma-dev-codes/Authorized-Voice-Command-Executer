@@ -11,3 +11,7 @@
 
 # Text files
 *.txt
+
+# Archive and cache files
+*.zip
+__pycache__/

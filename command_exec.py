@@ -1,19 +1,17 @@
 import os
 
-with open("commands.txt", "r") as f:
-    text = f.read()
+def exec_command(text):
+    if "browser" in text:
+        os.system("firefox")
 
-if "browser" in text:
-    os.system("firefox")
+    elif "terminal" in text:
+        os.system("gnome-terminal")
 
-elif "terminal" in text:
-    os.system("gnome-terminal")
+    elif "close" in text:
+        os.system("xdotool getwindowfocus windowkill")
 
-elif "close" in text:
-    os.system("xdotool getwindowfocus windowkill")
+    elif "shutdown" in text:
+        os.system("shutdown now")
 
-elif "shutdown" in text:
-    os.system("shutdown now")
-
-elif "restart" or " reboot" in text:
-    os.system("reboot")
+    elif "restart" in text or " reboot" in text:
+        os.system("reboot")

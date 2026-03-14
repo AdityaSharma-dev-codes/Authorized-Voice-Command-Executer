@@ -8,19 +8,20 @@ The goal of this project is to develop a personal voice authentication system th
 - **Voice Profile Creation:** Generate unique voice embeddings from recorded samples.
 - **Similarity Scoring:** Uses cosine similarity to compare voice embeddings.
 - **Offline Processing:** Designed to run locally with minimal dependencies.
-- **Transcription (Upcoming):** Integrated Whisper model for transcribing voice commands.
+- **Transcription:** Integrated Whisper model for transcribing voice commands.
 
 ## Installation
 
 ### Prerequisites
 - Python 3.8+
 - [PortAudio](http://www.portaudio.com/) (required for `sounddevice`)
+- [FFmpeg](https://ffmpeg.org/) (required for `openai-whisper`)
 
 ### Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repo/authorized-voice-command-executor.git
-   cd Authorized-Voice-Command-Executer
+   cd SpeechAI
    ```
 
 2. Install the required dependencies:
@@ -53,16 +54,17 @@ To test the authentication, run `voice_ver.py`. It will record 5 seconds of audi
 python voice_ver.py
 ```
 
-### 4. Speech Recognition and Command Execution(Experimental)
-Transcribe voice commands using OpenAI's Whisper `small` model and execute system commands.
-1. Run `speech_rec.py` to record and transcribe audio:
+### 4. Run the Integrated System
+Execute the main script to perform voice authentication, transcription, and command execution in one flow.
 ```bash
-python speech_rec.py
+python main.py
 ```
-2. Run `command_exec.py` to execute the transcribed command:
-```bash
-python command_exec.py
-```
+The system will:
+1. Record your voice for authentication.
+2. Verify your identity against the stored profile.
+3. If authorized, transcribe your command using OpenAI's Whisper `base` model.
+4. Execute the corresponding system command.
+
 Currently supported commands (searched in transcription):
 - **"browser"**: Opens the Firefox web browser.
 - **"terminal"**: Opens the `gnome-terminal`.
@@ -71,17 +73,19 @@ Currently supported commands (searched in transcription):
 - **"restart"** or **"reboot"**: Reboots the system.
 
 ## Project Structure
+- `main.py`: The entry point for the integrated system.
 - `voice_rec.py`: Records voice samples for training.
 - `voice_auth.py`: Generates a voice profile from the collected samples.
 - `voice_ver.py`: Performs live voice authentication.
-- `speech_rec.py`: Transcribes audio and saves it to `commands.txt` using Whisper.
-- `command_exec.py`: Reads `commands.txt` and executes corresponding system commands.
+- `speech_rec.py`: Transcribes audio using Whisper.
+- `command_exec.py`: Executes system commands based on transcription.
 - `commands.txt`: Stores the transcription of the latest voice command.
+- `command.wav`: Temporary file for recording verification and command audio.
 - `Samples/`: Directory for storing training voice samples.
 - `Voice_Profiles/`: Directory for storing the generated `.npy` profile.
 - `Test_voices/`: Directory for storing temporary recordings for verification.
 
 ## Future Goals
 - Implement continuous authentication.
-- Map authenticated voice commands to system actions.
+- Expand the list of supported system commands.
 - Improve security with anti-spoofing techniques.
